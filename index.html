@@ -59,7 +59,15 @@
 
       function openWindow() {}
 
-      async function getFriendship() {}
+      async function getFriendship() {
+        const friend = await liff.getFriendship();
+        document.getElementById("friendship").append(friend.friendFlag);
+        if (!friend.friendFlag) {
+          if (confirm("add pls")) {
+            window.location = "https://line.me/R/ti/p/@583exbep";
+          }
+        }
+      }
 
       async function sendMsg() {
         if (
@@ -114,7 +122,7 @@
         getEnvironment();
         getUserProfile();
         getContext();
-        // getFriendship()
+        getFriendship();
         // createUniversalLink()
       }
       main();
