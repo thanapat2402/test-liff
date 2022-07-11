@@ -61,7 +61,21 @@
 
       async function getFriendship() {}
 
-      async function sendMsg() {}
+      async function sendMsg() {
+        if (
+          liff.getContext().type !== "none" &&
+          liff.getContext().type !== "external"
+        ) {
+          await liff.sendMessages([
+            {
+              type: "sticker",
+              stickerId: 1,
+              packageId: 1,
+            },
+          ]);
+          alert("message sent");
+        }
+      }
 
       function getContext() {
         document.getElementById("type").append(liff.getContext().type);
