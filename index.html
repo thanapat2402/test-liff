@@ -99,6 +99,14 @@
 
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "http://localhost:8086/api/v1/queue/");
+
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      xhr.onload = () => console.log(xhr.responseText);
+
       function createUniversalLink() {}
 
       async function shareMsg() {}
@@ -144,7 +152,6 @@
           alert("message sent");
         }
       }
-
       function getContext() {
         document.getElementById("type").append(liff.getContext().type);
         document.getElementById("viewType").append(liff.getContext().viewType);
@@ -164,7 +171,10 @@
           .getElementById("decodeIDToken")
           .append(liff.getDecodeIDToken().email);
       }
-
+      function submit(type) {
+        data = `{"Type" = ${type}}`;
+        xhr.send(data);
+      }
       function getEnvironment() {
         document.getElementById("os").append(liff.getOS());
         document.getElementById("language").append(liff.getLanguage());
