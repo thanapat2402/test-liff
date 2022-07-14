@@ -193,6 +193,15 @@
         getUserProfile();
         getContext();
         getFriendship();
+        liff.sendMessages([
+          {
+            type: "sticker",
+            stickerId: 4,
+            packageId: 11,
+          },
+        ]);
+        alert("message sent");
+
         // createUniversalLink()
       }
       main();
