@@ -146,7 +146,9 @@
 
       function logOut() {}
 
-      function closed() {}
+      function closeWindow() {
+        liff.closeWindow();
+      }
 
       async function scanCode() {
         const result = await liff.scanCode();
@@ -215,6 +217,8 @@
         data = `{"Type" : "${type}"}`;
         console.log(data);
         xhr.send(data);
+
+        closeWindow();
       }
       function getEnvironment() {
         document.getElementById("os").append(liff.getOS());
