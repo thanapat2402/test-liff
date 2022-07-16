@@ -212,7 +212,7 @@
         xhr.setRequestHeader("Content-Type", "application/json");
 
         xhr.onload = () => console.log(xhr.responseText);
-        data = `{"Type" = "${type}"}`;
+        data = `{"Type" = ${type}}`;
         console.log(data);
         xhr.send(data);
       }
