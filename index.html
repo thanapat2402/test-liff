@@ -126,7 +126,6 @@
 
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
-      let profile;
       const api = "https://queue-system-admin.herokuapp.com/api/v1/queue/";
       function getQueue() {
         let request = new XMLHttpRequest();
@@ -197,18 +196,23 @@
         document.getElementById("groupId").append(liff.getContext().groupId);
       }
 
-      async function getUserProfile() {
-        profile = await liff.getProfile();
-        document.getElementById("pictureUrl").src = profile.pictureUrl;
-        document.getElementById("userId").append(profile.userId);
-        document.getElementById("statusMessage").append(profile.statusMassage);
-        document.getElementById("displayName").append(profile.displayName);
+      // async function getUserProfile() {
+      //   profile = await liff.getProfile();
+      //   document.getElementById("pictureUrl").src = profile.pictureUrl;
+      //   document.getElementById("userId").append(profile.userId);
+      //   document.getElementById("statusMessage").append(profile.statusMassage);
+      //   document.getElementById("displayName").append(profile.displayName);
 
-        document
-          .getElementById("decodeIDToken")
-          .append(liff.getDecodeIDToken().email);
+      //   document
+      //     .getElementById("decodeIDToken")
+      //     .append(liff.getDecodeIDToken().email);
+      // }
+      async function getUserProfile() {
+        const profile = await liff.getProfile();
+        return profile;
       }
       function submit(type) {
+        const profile = getUserProfile();
         let xhr = new XMLHttpRequest();
         xhr.open("POST", api);
 
