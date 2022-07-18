@@ -224,9 +224,9 @@
       //   profile.userId.append(user.userId);
       // }
       async function submit(type) {
-        // await liff.init({ liffId: "1657291874-G5YpjKq1" });
-        // const profile = await liff.getProfile();
-        // console.log(profile);
+        await liff.init({ liffId: "1657291874-G5YpjKq1" });
+        const profile = await liff.getProfile();
+        console.log(profile);
 
         let xhr = new XMLHttpRequest();
         xhr.open("POST", api);
