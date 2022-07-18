@@ -25,7 +25,10 @@
   <body>
     <script>
       let request = new XMLHttpRequest();
-      request.open("Get", api);
+      request.open(
+        "Get",
+        "https://queue-system-admin.herokuapp.com/api/v1/queue/"
+      );
       request.send();
       request.onload = () => {
         console.log(request);
@@ -213,7 +216,7 @@
       }
       async function submit(type) {
         //await liff.init({ liffId: "1657291874-G5YpjKq1" });
-        const profile = await liff.getUserProfile();
+        const profile = await liff.getProfile();
         console.log(profile);
         let xhr = new XMLHttpRequest();
         xhr.open("POST", api);
