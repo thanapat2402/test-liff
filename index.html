@@ -217,9 +217,11 @@
         data = `{"Type" : "${type}"}`;
         console.log(data);
         xhr.send(data);
-        if (xhr.responseText.search("Fail")) alert("Booking Complete!");
-        console.log(xhr.getAllResponseHeaders());
-        closeWindow();
+        if (xhr.responseText.search("Fail")) {
+          alert("Booking Complete!");
+          console.log(xhr.getAllResponseHeaders());
+          closeWindow();
+        }
       }
       function getEnvironment() {
         document.getElementById("os").append(liff.getOS());
