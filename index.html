@@ -217,7 +217,7 @@
         data = `{"Type" : "${type}"}`;
         console.log(data);
         xhr.send(data);
-
+        alert("Booking Complete!");
         closeWindow();
       }
       function getEnvironment() {
@@ -239,14 +239,14 @@
         getContext();
         getFriendship();
         getQueue();
-        liff.sendMessages([
-          {
-            type: "sticker",
-            stickerId: 4,
-            packageId: 11,
-          },
-        ]);
-        alert("message sent");
+        // liff.sendMessages([
+        //   {
+        //     type: "sticker",
+        //     stickerId: 4,
+        //     packageId: 11,
+        //   },
+        // ]);
+        // alert("message sent");
 
         // createUniversalLink()
       }
