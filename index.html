@@ -217,8 +217,8 @@
         data = `{"Type" : "${type}"}`;
         console.log(data);
         xhr.send(data);
-        alert("Booking Complete!");
-        console.log(xhr.responseXML);
+        if (xhr.responseText.search("Created")) alert("Booking Complete!");
+        console.log(xhr.getAllResponseHeaders());
         closeWindow();
       }
       function getEnvironment() {
