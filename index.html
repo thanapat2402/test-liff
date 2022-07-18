@@ -217,7 +217,7 @@
         data = `{"Type" : "${type}"}`;
         console.log(data);
         xhr.send(data);
-        if (xhr.responseText.search("Created")) alert("Booking Complete!");
+        if (xhr.responseText.search("Fail")) alert("Booking Complete!");
         console.log(xhr.getAllResponseHeaders());
         closeWindow();
       }
