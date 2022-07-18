@@ -131,7 +131,7 @@
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
       const api = "https://queue-system-admin.herokuapp.com/api/v1/queue/";
-      const profile = {
+      profile = {
         displayName: "",
         userId: "",
       };
@@ -205,11 +205,13 @@
       }
 
       async function getUserProfile() {
-        profile = await liff.getProfile();
-        document.getElementById("pictureUrl").src = profile.pictureUrl;
-        document.getElementById("userId").append(profile.userId);
-        document.getElementById("statusMessage").append(profile.statusMassage);
-        document.getElementById("displayName").append(profile.displayName);
+        user = await liff.getProfile();
+        document.getElementById("pictureUrl").src = user.pictureUrl;
+        document.getElementById("userId").append(user.userId);
+        document.getElementById("statusMessage").append(user.statusMassage);
+        document.getElementById("displayName").append(user.displayName);
+        profile.displayName.append(user.displayName);
+        profile.userId.append(user.userId);
 
         document
           .getElementById("decodeIDToken")
