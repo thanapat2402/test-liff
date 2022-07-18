@@ -213,6 +213,7 @@
       }
       function submit(type) {
         const profile = getUserProfile();
+        console.log(profile);
         let xhr = new XMLHttpRequest();
         xhr.open("POST", api);
 
