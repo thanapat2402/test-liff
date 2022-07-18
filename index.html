@@ -211,8 +211,7 @@
         const profile = await liff.getProfile();
         return profile;
       }
-      async function submit(type) {
-        const profile = await getUserProfile();
+      function submit(type) {
         console.log(profile);
         let xhr = new XMLHttpRequest();
         xhr.open("POST", api);
@@ -245,7 +244,7 @@
         // alert("LINE Developers x Skooldio");
         await liff.init({ liffId: "1657291874-G5YpjKq1" });
         getEnvironment();
-        getUserProfile();
+        const profile = getUserProfile();
         getContext();
         getFriendship();
         getQueue();
