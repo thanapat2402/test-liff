@@ -213,7 +213,7 @@
       }
       async function submit(type) {
         await liff.init({ liffId: "1657291874-G5YpjKq1" });
-        const profile = getUserProfile();
+        const profile = await getUserProfile();
         console.log(profile);
         let xhr = new XMLHttpRequest();
         xhr.open("POST", api);
