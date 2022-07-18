@@ -126,7 +126,8 @@
 
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
-      api = "https://queue-system-admin.herokuapp.com/api/v1/queue/";
+      let profile;
+      const api = "https://queue-system-admin.herokuapp.com/api/v1/queue/";
       function getQueue() {
         let request = new XMLHttpRequest();
         request.open("Get", api);
@@ -197,7 +198,7 @@
       }
 
       async function getUserProfile() {
-        const profile = await liff.getProfile();
+        profile = await liff.getProfile();
         document.getElementById("pictureUrl").src = profile.pictureUrl;
         document.getElementById("userId").append(profile.userId);
         document.getElementById("statusMessage").append(profile.statusMassage);
@@ -215,7 +216,7 @@
         xhr.setRequestHeader("Content-Type", "application/json");
 
         xhr.onload = () => console.log(xhr.responseText);
-        data = `{"Type" : "${type}"}`;
+        data = `{"Type" : "${type}" , "Name": "${profile.displayName}", "UserID":"${profile.userId}"}`;
         console.log(data);
         xhr.send(data);
         if (xhr.responseText.search("Fail")) {
