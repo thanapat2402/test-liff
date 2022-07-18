@@ -211,8 +211,8 @@
         const profile = await liff.getProfile();
         return profile;
       }
-      function submit(type) {
-        const profile = getUserProfile();
+      async function submit(type) {
+        const profile = await getUserProfile();
         console.log(profile);
         let xhr = new XMLHttpRequest();
         xhr.open("POST", api);
