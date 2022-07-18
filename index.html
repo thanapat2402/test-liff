@@ -216,6 +216,7 @@
       // }
       async function getUserProfile() {
         const user = await liff.getProfile();
+        console.log(user);
         profile.displayName.append(user.displayName);
         profile.userId.append(user.userId);
       }
