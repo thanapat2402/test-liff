@@ -188,9 +188,8 @@
         ) {
           await liff.sendMessages([
             {
-              type: "sticker",
-              stickerId: 4,
-              packageId: 11,
+              type: "text",
+              text: "คิวของท่านได้ถูกบันทึกแล้ว",
             },
           ]);
           alert("message sent");
@@ -240,6 +239,7 @@
         xhr.send(data);
         if (xhr.responseText.search("Fail")) {
           alert("Booking Complete!");
+          sendMsg();
           console.log(xhr.getAllResponseHeaders());
           closeWindow();
         }
