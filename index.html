@@ -27,7 +27,7 @@
       let request = new XMLHttpRequest();
       request.open(
         "Get",
-        "https://queue-system-admin.herokuapp.com/api/v1/queue/"
+        "https://queue-system-admin.herokuapp.com/api/v1/web/"
       );
       request.send();
       request.onload = () => {
@@ -130,7 +130,7 @@
 
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
-      const api = "https://queue-system-admin.herokuapp.com/api/v1/queue/";
+      const api = "https://queue-system-admin.herokuapp.com/api/v1/web/";
       profile = {
         displayName: "",
         userId: "",
@@ -181,6 +181,7 @@
         }
       }
 
+      function botSend() {}
       async function sendMsg() {
         if (
           liff.getContext().type !== "none" &&
