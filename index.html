@@ -90,44 +90,6 @@
       </div>
     </div>
 
-    <!-- <p id="os"><b>OS:</b></p>
-    <p id="language"><b>Language:</b></p>
-    <p id="version"><b>Version:</b></p>
-    <p id="isInClient"><b>isInClient:</b></p>
-    <p id="accessToken"><b>AccessToken:</b></p>
-    <img id="pictureUrl" />-->
-    <!-- <p id="userId"><b>userId:</b></p>
-    <p id="displayName"><b>displayName:</b></p> -->
-    <!--
-    <p id="statusMessage"><b>statusMessage:</b></p>
-    <p id="decodedIDToken"><b>email:</b></p>
-    <p id="type"><b>type:</b></p>
-    <p id="viewType"><b>viewType:</b></p>
-    <p id="utouId"><b>utouId:</b></p>
-    <p id="roomId"><b>roomId:</b></p>
-    <p id="groupId"><b>groupId:</b></p>
-    <p id="friendship"><b>isFriendship:</b></p>
-    <p id="scanCode"><b>Code:</b></p>
-    <p id="isLoggedIn"><b>isLoggedIn:</b></p>
-    <p id="universalLink1"><b>Universal Link:</b></p>
-    <p id="universalLink2"><b>Universal Link with Query params:</b></p>
-    <p><a href="liff/path/?param=9">Link to Path</a></p>
-
-    <button id="btnMsg" class="btn btn-success" onclick="sendMsg()">
-      Send Message
-    </button>
-    <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
-    <button onclick="openWindow()">Open Window</button>
-    <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
-    <button id="btnLogOut" onclick="logOut()">Log Out</button>
-    <button id="btnClose" onclick="closed()">Close</button> -->
-
-    <!-- <script src="js/vconsole.min.js"></scrip> -->
-    <!-- <script>
-    var vConsole = new VConsole()
-    console.log("Hello World!")
-  </> -->
-
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
       const api = "https://queue-system-admin.herokuapp.com/api/v1/web/";
@@ -135,94 +97,18 @@
         displayName: "",
         userId: "",
       };
-      function getQueue() {
-        let request = new XMLHttpRequest();
-        request.open("Get", api);
-        request.send();
-        request.onload = () => {
-          console.log(request);
-          if (request.status === 200) {
-            console.log(JSON.parse(request.response));
-          } else {
-            console.log("error");
-          }
-        };
-      }
-
-      function createUniversalLink() {}
-
-      async function shareMsg() {}
-
-      function logOut() {}
 
       function closeWindow() {
         liff.closeWindow();
       }
 
-      async function scanCode() {
-        const result = await liff.scanCode();
-        document.getElementById("scanCode").append(result.value);
-      }
-
-      function openWindow() {
-        liff.openWindow({
-          url: "https://line.me",
-          external: true,
-        });
-      }
-
-      async function getFriendship() {
-        const friend = await liff.getFriendship();
-        document.getElementById("friendship").append(friend.friendFlag);
-        if (!friend.friendFlag) {
-          if (confirm("add pls")) {
-            window.location = "https://line.me/R/ti/p/@583exbep";
-          }
-        }
-      }
-
-      function botSend() {}
-      async function sendMsg() {
-        if (
-          liff.getContext().type !== "none" &&
-          liff.getContext().type !== "external"
-        ) {
-          await liff.sendMessages([
-            {
-              type: "text",
-              text: "คิวของท่านได้ถูกบันทึกแล้ว",
-            },
-          ]);
-          alert("message sent");
-        }
-      }
-      function getContext() {
-        document.getElementById("type").append(liff.getContext().type);
-        document.getElementById("viewType").append(liff.getContext().viewType);
-        document.getElementById("utouId").append(liff.getContext().utouId);
-        document.getElementById("roomId").append(liff.getContext().roomId);
-        document.getElementById("groupId").append(liff.getContext().groupId);
-      }
-
       async function getUserProfile() {
         user = await liff.getProfile();
-        document.getElementById("pictureUrl").src = user.pictureUrl;
-        document.getElementById("userId").append(user.userId);
-        document.getElementById("statusMessage").append(user.statusMassage);
-        document.getElementById("displayName").append(user.displayName);
+
         profile.displayName.append(user.displayName);
         profile.userId.append(user.userId);
-
-        document
-          .getElementById("decodeIDToken")
-          .append(liff.getDecodeIDToken().email);
       }
-      // async function getUserProfile() {
-      //   const user = await liff.getProfile();
-      //   console.log(user);
-      //   profile.displayName.append(user.displayName);
-      //   profile.userId.append(user.userId);
-      // }
+
       async function submit(type) {
         await liff.init({ liffId: "1657291874-G5YpjKq1" });
         const profile = await liff.getProfile();
@@ -256,23 +142,12 @@
       }
 
       async function main() {
-        // alert("LINE Developers x Skooldio");
         await liff.init({ liffId: "1657291874-G5YpjKq1" });
         getEnvironment();
         getUserProfile();
         getContext();
         getFriendship();
         getQueue();
-        // liff.sendMessages([
-        //   {
-        //     type: "sticker",
-        //     stickerId: 4,
-        //     packageId: 11,
-        //   },
-        // ]);
-        // alert("message sent");
-
-        // createUniversalLink()
       }
       main();
     </script>
